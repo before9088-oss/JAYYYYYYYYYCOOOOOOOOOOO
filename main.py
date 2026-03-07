@@ -115,6 +115,7 @@ ClaseSocial = {
         "prob": 10,
         "img": "https://i.pinimg.com/1200x/b9/c0/2c/b9c02c0c9f1c2278e8f625b83cd737d2.jpg"
     }
+}
 
 FamiliaPlebeyo = {
     "Staria": {"prob": 20, "img": "https://i.pinimg.com/736x/d6/90/46/d6904644ee33d8c9e5503b1f402cf43f.jpg"},
@@ -346,6 +347,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
