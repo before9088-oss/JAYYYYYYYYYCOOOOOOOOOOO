@@ -78,8 +78,12 @@ async def tirar_spin(ctx, categoria, items_dict, color=discord.Color.blue()):
     if categoria == "Clase Social":
         ponderados = ["No tienes"] * 6 + ["Clase Plebeyo", "Clase Media", "Clase Noble"]
         elegido = random.choice(ponderados)
-    else:
-        elegido = random.choice(list(items_dict.keys()))
+else:
+    nombres = list(items_dict.keys())
+    pesos = [items_dict[n]["prob"] for n in nombres]
+    elegido = random.choices(nombres, weights=pesos)[0]
+
+imagen = items_dict[elegido]["img"]
 
     imagen = items_dict.get(elegido)
 
@@ -101,57 +105,74 @@ async def tirar_spin(ctx, categoria, items_dict, color=discord.Color.blue()):
 # ITEMS
 # -----------------------------
 ClaseSocial = {
-    "Clase Plebeyo": "https://i.pinimg.com/736x/79/e0/1f/79e01fd9da05a2f2aabd49fde829ec77.jpg",
-    "Clase Media": "https://i.pinimg.com/1200x/3b/df/81/3bdf81a2953900bc411141704a7a4488.jpg",
-    "Clase Noble": "https://i.pinimg.com/1200x/b9/c0/2c/b9c02c0c9f1c2278e8f625b83cd737d2.jpg"
-}
+    "Clase Plebeyo": {
+        "prob": 60,
+        "img": "https://i.pinimg.com/736x/79/e0/1f/79e01fd9da05a2f2aabd49fde829ec77.jpg"
+    },
+    "Clase Media": {
+        "prob": 30,
+        "img": "https://i.pinimg.com/1200x/3b/df/81/3bdf81a2953900bc411141704a7a4488.jpg"
+    },
+    "Clase Noble": {
+        "prob": 10,
+        "img": "https://i.pinimg.com/1200x/b9/c0/2c/b9c02c0c9f1c2278e8f625b83cd737d2.jpg"
+    }
 
 FamiliaPlebeyo = {
-    "Staria": "https://i.pinimg.com/736x/d6/90/46/d6904644ee33d8c9e5503b1f402cf43f.jpg",
-    "Sukehiro": "https://i.pinimg.com/control1/736x/b3/d0/71/b3d071b0d252608ad5c5e5220cb72c73.jpg",
-    "Voltia": "https://i.pinimg.com/1200x/56/d7/44/56d744dcd0e27acbf6c008350a07f6ad.jpg",
-    "Agrippa": "https://i.pinimg.com/1200x/3f/31/1d/3f311d447d518cb57bc982b99d006188.jpg",
-    "Swing": "https://i.pinimg.com/736x/ca/ae/25/caae2584970789666061360408ebb044.jpg",
+    "Staria": {"prob": 20, "img": "https://i.pinimg.com/736x/d6/90/46/d6904644ee33d8c9e5503b1f402cf43f.jpg"},
+    "Sukehiro": {"prob": 20, "img": "https://i.pinimg.com/control1/736x/b3/d0/71/b3d071b0d252608ad5c5e5220cb72c73.jpg"},
+    "Voltia": {"prob": 20, "img": "https://i.pinimg.com/1200x/56/d7/44/56d744dcd0e27acbf6c008350a07f6ad.jpg"},
+    "Agrippa": {"prob": 20, "img": "https://i.pinimg.com/1200x/3f/31/1d/3f311d447d518cb57bc982b99d006188.jpg"},
+    "Swing": {"prob": 20, "img": "https://i.pinimg.com/736x/ca/ae/25/caae2584970789666061360408ebb044.jpg"}
 }
 
 FamiliaClaseMedia = {
-    "Faust": "https://i.pinimg.com/736x/d8/16/41/d8164177101f6263e72f1ecc941c85a6.jpg",
-    "Granvorka": "https://i.pinimg.com/1200x/1f/85/1f/1f851f68bf2f13796bd6a733ac76a1f3.jpg",
-    "Unsworth": "https://i.pinimg.com/736x/46/1b/a4/461ba4bd3e6118b88112bcfb2f56dcf7.jpg",
-    "Enoteca": "https://i.pinimg.com/736x/b5/59/34/b5593449d194af29c5adf98fc77b83d2.jpg",
+    "Faust": {"prob": 25, "img": "https://i.pinimg.com/736x/d8/16/41/d8164177101f6263e72f1ecc941c85a6.jpg"},
+    "Granvorka": {"prob": 25, "img": "https://i.pinimg.com/1200x/1f/85/1f/1f851f68bf2f13796bd6a733ac76a1f3.jpg"},
+    "Unsworth": {"prob": 25, "img": "https://i.pinimg.com/736x/46/1b/a4/461ba4bd3e6118b88112bcfb2f56dcf7.jpg"},
+    "Enoteca": {"prob": 25, "img": "https://i.pinimg.com/736x/b5/59/34/b5593449d194af29c5adf98fc77b83d2.jpg"}
 }
 
 ClaseNoble = {
-    "Roselei": "https://i.pinimg.com/736x/0d/74/be/0d74be5e8e1b9f45b45d5be34ed0df73.jpg",
-    "Silva": "https://i.pinimg.com/1200x/da/91/21/da9121f77189b84f26fc65d437a96f4f.jpg",
-    "Lunettes": "https://i.pinimg.com/736x/2b/a5/21/2ba5213d21cac1c1c532c89c99a7ea4d.jpg",
-    "Vaude": "https://i.pinimg.com/1200x/71/a7/43/71a74308aa7d15ed1f7f26abbf0517f1.jpg",
-    "Caseus": "https://i.pinimg.com/736x/7c/ca/db/7ccadb8848891ffb7652ec02df84a24b.jpg",
-    "Boismortier": "https://i.pinimg.com/1200x/94/36/59/94365990aaa0e40063704b467e8394b3.jpg",
-    "Novachrono": "https://i.pinimg.com/736x/34/a7/a1/34a7a1ccc3dbddea0daf2629c9d38944.jpg",
-    "Vangeance": "https://i.pinimg.com/1200x/51/52/b9/5152b92de4dd72e030e44054efe2b097.jpg",
-    "Grinberryal": "https://i.pinimg.com/736x/50/95/b8/5095b8f2eddb0c4960807c852825395b.jpg",
-    "Vermillion": "https://i.pinimg.com/736x/2f/3b/7c/2f3b7c65da6b70c431bdc7dba6578488.jpg",
-    "Kira": "https://i.pinimg.com/1200x/96/ff/9d/96ff9d3204f7b349bf4e1ee21abdadba.jpg",
+    "Roselei": {"prob": 9, "img": "https://i.pinimg.com/736x/0d/74/be/0d74be5e8e1b9f45b45d5be34ed0df73.jpg"},
+    "Silva": {"prob": 9, "img": "https://i.pinimg.com/1200x/da/91/21/da9121f77189b84f26fc65d437a96f4f.jpg"},
+    "Lunettes": {"prob": 9, "img": "https://i.pinimg.com/736x/2b/a5/21/2ba5213d21cac1c1c532c89c99a7ea4d.jpg"},
+    "Vaude": {"prob": 9, "img": "https://i.pinimg.com/1200x/71/a7/43/71a74308aa7d15ed1f7f26abbf0517f1.jpg"},
+    "Caseus": {"prob": 9, "img": "https://i.pinimg.com/736x/7c/ca/db/7ccadb8848891ffb7652ec02df84a24b.jpg"},
+    "Boismortier": {"prob": 9, "img": "https://i.pinimg.com/1200x/94/36/59/94365990aaa0e40063704b467e8394b3.jpg"},
+    "Novachrono": {"prob": 9, "img": "https://i.pinimg.com/736x/34/a7/a1/34a7a1ccc3dbddea0daf2629c9d38944.jpg"},
+    "Vangeance": {"prob": 9, "img": "https://i.pinimg.com/1200x/51/52/b9/5152b92de4dd72e030e44054efe2b097.jpg"},
+    "Grinberryal": {"prob": 9, "img": "https://i.pinimg.com/736x/50/95/b8/5095b8f2eddb0c4960807c852825395b.jpg"},
+    "Vermillion": {"prob": 9, "img": "https://i.pinimg.com/736x/2f/3b/7c/2f3b7c65da6b70c431bdc7dba6578488.jpg"},
+    "Kira": {"prob": 10, "img": "https://i.pinimg.com/1200x/96/ff/9d/96ff9d3204f7b349bf4e1ee21abdadba.jpg"}
 }
 
 Grimorio = {
-    "3 hojas": "https://i.pinimg.com/1200x/7a/fe/09/7afe09ff61c8b311f05d2217638f6262.jpg",
-    "4 hojas": "https://i.pinimg.com/736x/8d/02/5e/8d025e6a0b46a3f0095849c3edbd5299.jpg",
-    "5 hojas": "https://i.pinimg.com/1200x/95/98/18/959818b45a30c4f19a851cc372bf4486.jpg"
+    "3 hojas": {
+        "prob": 80,
+        "img": "https://i.pinimg.com/1200x/7a/fe/09/7afe09ff61c8b311f05d2217638f6262.jpg"
+    },
+    "4 hojas": {
+        "prob": 18,
+        "img": "https://i.pinimg.com/736x/8d/02/5e/8d025e6a0b46a3f0095849c3edbd5299.jpg"
+    },
+    "5 hojas": {
+        "prob": 2,
+        "img": "https://i.pinimg.com/1200x/95/98/18/959818b45a30c4f19a851cc372bf4486.jpg"
+    }
 }
 
 Reino = {
-    "Reino del Diamante": "https://i.pinimg.com/736x/1b/c7/23/1bc723b2957850f93020d9023a737dcd.jpg",
-    "Reino del Corazón": "https://i.pinimg.com/736x/c7/2d/9a/c72d9a3366cd540ae87f6195ffcd40de.jpg",
-    "Reino de la Pica": "https://i.pinimg.com/1200x/f3/3e/c2/f33ec2ec51db6d09532d8445a878a92f.jpg",
-    "Reino del Trébol": "https://i.pinimg.com/1200x/b6/c7/55/b6c755d9a59acdda182acb0d2dbef4c2.jpg",
+    "Reino del Diamante": {"prob": 25, "img": "https://i.pinimg.com/736x/1b/c7/23/1bc723b2957850f93020d9023a737dcd.jpg"},
+    "Reino del Corazón": {"prob": 25, "img": "https://i.pinimg.com/736x/c7/2d/9a/c72d9a3366cd540ae87f6195ffcd40de.jpg"},
+    "Reino de la Pica": {"prob": 20, "img": "https://i.pinimg.com/1200x/f3/3e/c2/f33ec2ec51db6d09532d8445a878a92f.jpg"},
+    "Reino del Trébol": {"prob": 30, "img": "https://i.pinimg.com/1200x/b6/c7/55/b6c755d9a59acdda182acb0d2dbef4c2.jpg"}
 }
 
 TALENTOS = {
-    "Prodigio": "https://i.pinimg.com/736x/da/1e/90/da1e90524557ee189825504242c5753a.jpg",
-    "Genio": "https://i.pinimg.com/736x/da/1e/90/da1e90524557ee189825504242c5753a.jpg",
-    "Reencarnado": "https://i.pinimg.com/736x/da/1e/90/da1e90524557ee189825504242c5753a.jpg"
+    "Prodigio": {"prob": 60, "img": "https://i.pinimg.com/736x/da/1e/90/da1e90524557ee189825504242c5753a.jpg"},
+    "Genio": {"prob": 30, "img": "https://i.pinimg.com/736x/da/1e/90/da1e90524557ee189825504242c5753a.jpg"},
+    "Reencarnado": {"prob": 10, "img": "https://i.pinimg.com/736x/da/1e/90/da1e90524557ee189825504242c5753a.jpg"}
 }
 
 # -----------------------------
@@ -327,6 +348,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
