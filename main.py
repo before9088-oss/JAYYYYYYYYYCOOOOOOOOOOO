@@ -54,11 +54,11 @@ async def tirar_spin(ctx, categoria, items_dict, color=discord.Color.blue()):
     if user_id not in inventario:
         inventario[user_id] = {
             "rr": {
-                "Clase Social": 3,
+                "Clase Social": 1,
                 "Familia": 3,
                 "Talento": 1,
-                "Grimorio": 3,
-                "Reino": 3
+                "Grimorio": 1,
+                "Reino": 1
             },
             "objetos": {
                 "Clase Social": [],
@@ -327,6 +327,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
