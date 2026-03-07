@@ -83,7 +83,6 @@ async def tirar_spin(ctx, categoria, items_dict, color=discord.Color.blue()):
     pesos = [items_dict[n]["prob"] for n in nombres]
     elegido = random.choices(nombres, weights=pesos)[0]
     imagen = items_dict[elegido]["img"]
-    imagen = items_dict.get(elegido)
 
     inventario[user_id]["objetos"][categoria] = [elegido]
     guardar_inventario()
@@ -347,6 +346,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
