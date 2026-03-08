@@ -75,15 +75,10 @@ async def tirar_spin(ctx, categoria, items_dict, color=discord.Color.blue()):
 
     inventario[user_id]["rr"][categoria] -= 1
 
-    if categoria == "Clase Social":
-         nombres = list(items_dict.keys())
+
+    nombres = list(items_dict.keys())
     pesos = [items_dict[n]["prob"] for n in nombres]
-    elegido = random.choices(nombres, weights=pesos)[0]
-    imagen = items_dict[elegido]["img"]
-    
-    else:
-        nombres = list(items_dict.keys())
-    pesos = [items_dict[n]["prob"] for n in nombres]
+
     elegido = random.choices(nombres, weights=pesos)[0]
     imagen = items_dict[elegido]["img"]
 
@@ -349,6 +344,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
