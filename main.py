@@ -280,7 +280,7 @@ async def dar_objeto(ctx, miembro: discord.Member, categoria: str, *, nombre: st
     if categoria not in ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]:
         embed_error = discord.Embed(
             title="❌ Error",
-            description="La categoría no es válida.\nCategorías válidas: Clase Social, Familia, Talento, Grimorio, Reino",
+            description="La categoría no es válida.\nCategorías válidas: ClaseSocial, Familia, Talento, Grimorio, Reino",
             color=discord.Color.red()
         )
         await ctx.send(embed=embed_error)
@@ -345,6 +345,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
