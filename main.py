@@ -34,7 +34,7 @@ def guardar_inventario():
 # Normalizar inventario completo
 # -----------------------------
 def actualizar_todo_inventario():
-    categorias = ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]
+    categorias = ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]
     for user_id in inventario:
         inventario[user_id].setdefault("rr", {})
         inventario[user_id].setdefault("objetos", {})
@@ -54,14 +54,14 @@ async def tirar_spin(ctx, categoria, items_dict, color=discord.Color.blue()):
     if user_id not in inventario:
         inventario[user_id] = {
             "rr": {
-                "Clase Social": 1,
+                "ClaseSocial": 1,
                 "Familia": 3,
                 "Talento": 1,
                 "Grimorio": 1,
                 "Reino": 1
             },
             "objetos": {
-                "Clase Social": [],
+                "ClaseSocial": [],
                 "Familia": [],
                 "Talento": [],
                 "Grimorio": [],
@@ -209,7 +209,7 @@ async def inventario_cmd(ctx, miembro: discord.Member = None):
     user_id = str(miembro.id)
 
     # 🔥 ACTUALIZACIÓN AUTOMÁTICA POR USUARIO
-    categorias = ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]
+    categorias = ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]
     if user_id not in inventario:
         inventario[user_id] = {"rr": {}, "objetos": {}}
     for cat in categorias:
@@ -237,12 +237,12 @@ async def inventario_cmd(ctx, miembro: discord.Member = None):
 @commands.has_permissions(administrator=True)
 async def dar_rr(ctx, miembro: discord.Member, categoria: str, cantidad: int):
     categoria = categoria.capitalize()
-    if categoria not in ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]:
+    if categoria not in ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]:
         await ctx.send("❌ Categoría inválida.")
         return
     user_id = str(miembro.id)
     # Normalizar inventario del usuario
-    categorias = ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]
+    categorias = ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]
     if user_id not in inventario:
         inventario[user_id] = {"rr": {}, "objetos": {}}
     for cat in categorias:
@@ -256,11 +256,11 @@ async def dar_rr(ctx, miembro: discord.Member, categoria: str, cantidad: int):
 @commands.has_permissions(administrator=True)
 async def quitar_rr(ctx, miembro: discord.Member, categoria: str, cantidad: int):
     categoria = categoria.capitalize()
-    if categoria not in ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]:
+    if categoria not in ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]:
         await ctx.send("❌ Categoría inválida.")
         return
     user_id = str(miembro.id)
-    categorias = ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]
+    categorias = ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]
     if user_id not in inventario:
         inventario[user_id] = {"rr": {}, "objetos": {}}
     for cat in categorias:
@@ -277,7 +277,7 @@ async def quitar_rr(ctx, miembro: discord.Member, categoria: str, cantidad: int)
 @commands.has_permissions(administrator=True)
 async def dar_objeto(ctx, miembro: discord.Member, categoria: str, *, nombre: str):
     categoria = categoria.capitalize()
-    if categoria not in ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]:
+    if categoria not in ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]:
         embed_error = discord.Embed(
             title="❌ Error",
             description="La categoría no es válida.\nCategorías válidas: Clase Social, Familia, Talento, Grimorio, Reino",
@@ -286,7 +286,7 @@ async def dar_objeto(ctx, miembro: discord.Member, categoria: str, *, nombre: st
         await ctx.send(embed=embed_error)
         return
     user_id = str(miembro.id)
-    categorias = ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]
+    categorias = ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]
     if user_id not in inventario:
         inventario[user_id] = {"rr": {}, "objetos": {}}
     for cat in categorias:
@@ -305,16 +305,16 @@ async def dar_objeto(ctx, miembro: discord.Member, categoria: str, *, nombre: st
 @commands.has_permissions(administrator=True)
 async def quitar_objeto(ctx, miembro: discord.Member, categoria: str, *, nombre: str):
     categoria = categoria.capitalize()
-    if categoria not in ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]:
+    if categoria not in ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]:
         embed_error = discord.Embed(
             title="❌ Error",
-            description="La categoría no es válida.\nCategorías válidas: Clase Social, Familia, Talento, Grimorio, Reino",
+            description="La categoría no es válida.\nCategorías válidas: ClaseSocial, Familia, Talento, Grimorio, Reino",
             color=discord.Color.red()
         )
         await ctx.send(embed=embed_error)
         return
     user_id = str(miembro.id)
-    categorias = ["Clase Social", "Familia", "Talento", "Grimorio", "Reino"]
+    categorias = ["ClaseSocial", "Familia", "Talento", "Grimorio", "Reino"]
     if user_id not in inventario:
         inventario[user_id] = {"rr": {}, "objetos": {}}
     for cat in categorias:
@@ -345,6 +345,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
