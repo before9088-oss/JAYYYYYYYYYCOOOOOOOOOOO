@@ -75,7 +75,6 @@ async def tirar_spin(ctx, categoria, items_dict, color=discord.Color.blue()):
 
     inventario[user_id]["rr"][categoria] -= 1
 
-
     nombres = list(items_dict.keys())
     pesos = [items_dict[n]["prob"] for n in nombres]
 
@@ -345,6 +344,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
