@@ -235,19 +235,22 @@ async def inventario_cmd(ctx, miembro: discord.Member = None):
 @bot.command(name="dar_rr")
 @commands.has_permissions(administrator=True)
 async def dar_rr(ctx, miembro: discord.Member, categoria: str, cantidad: int):
+
     categoria = categoria.replace(" ", "").lower()
 
     mapa = {
-    "clasesocial": "ClaseSocial",
-    "familia": "Familia",
-    "talento": "Talento",
-    "grimorio": "Grimorio",
-    "reino": "Reino"
+        "clasesocial": "ClaseSocial",
+        "familia": "Familia",
+        "talento": "Talento",
+        "grimorio": "Grimorio",
+        "reino": "Reino"
     }
 
     if categoria not in mapa:
-    await ctx.send("❌ Categoría inválida.")
-    return
+        await ctx.send("❌ Categoría inválida.")
+        return
+
+    categoria = mapa[categoria]
 
     user_id = str(miembro.id)
     # Normalizar inventario del usuario
@@ -354,6 +357,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
