@@ -196,7 +196,7 @@ async def cmd_grimorio(ctx):
 
 @bot.command(name="clasesocial")
 async def cmd_clasesocial(ctx):
-    await tirar_spin(ctx, "Clase Social", ClaseSocial, color=discord.Color.gold())
+    await tirar_spin(ctx, "ClaseSocial", ClaseSocial, color=discord.Color.gold())
 
 # -----------------------------
 # Comando de inventario
@@ -344,6 +344,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 bot.run(TOKEN)
+
 
 
 
